@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tom Kurz | Startseite</title>
+    <style>
+      :root {
+        --bg: #f5f3ee;
+        --surface: #ffffff;
+        --surface-alt: #f0efe9;
+        --text: #1d1d1f;
+        --muted: #5b5b61;
+        --border: #d9d3ca;
+        --accent: #2f5d50;
+        --accent-soft: #dfece6;
+        --shadow: rgba(19, 21, 25, 0.08);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        background: linear-gradient(180deg, var(--bg) 0%, #f0ede8 100%);
+        color: var(--text);
+        line-height: 1.6;
+      }
+
+      img {
+        max-width: 100%;
+        display: block;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .page {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 32px 20px 48px;
+      }
+
+      header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 32px;
+        padding: 32px 0 20px;
+      }
+
+      .hero-copy {
+        flex: 1.2;
+      }
+
+      .eyebrow {
+        display: inline-block;
+        margin: 0 0 12px;
+        padding: 6px 10px;
+        border-radius: 999px;
+        background: var(--accent-soft);
+        color: var(--accent);
+        font-size: 0.8rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      h1 {
+        margin: 0 0 16px;
+        font-size: clamp(2.3rem, 4vw, 4rem);
+        line-height: 1.05;
+        letter-spacing: -0.06em;
+      }
+
+      .hero-copy p {
+        margin: 0 0 12px;
+        max-width: 52ch;
+        color: var(--muted);
+        font-size: 1.06rem;
+      }
+
+      .portrait {
+        flex: 0 0 290px;
+        margin: 0;
+      }
+
+      .portrait img {
+        width: 100%;
+        aspect-ratio: 4 / 5;
+        object-fit: cover;
+        border-radius: 22px;
+        border: 1px solid var(--border);
+        box-shadow: 0 18px 40px var(--shadow);
+        background: var(--surface-alt);
+      }
+
+      main {
+        display: grid;
+        gap: 36px;
+        padding-top: 12px;
+      }
+
+      section {
+        background: rgba(255, 255, 255, 0.65);
+        border: 1px solid var(--border);
+        border-radius: 20px;
+        padding: 24px 22px;
+        box-shadow: 0 8px 20px rgba(15, 23, 20, 0.02);
+      }
+
+      h2 {
+        margin: 0 0 18px;
+        font-size: clamp(1.4rem, 2vw, 2rem);
+        letter-spacing: -0.04em;
+      }
+
+      .intro {
+        display: grid;
+        gap: 14px;
+      }
+
+      .intro p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 1rem;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        overflow: hidden;
+        border-radius: 12px;
+        border: 1px solid var(--border);
+        background: var(--surface);
+      }
+
+      th,
+      td {
+        padding: 14px 12px;
+        border-bottom: 1px solid var(--border);
+        text-align: left;
+        vertical-align: top;
+      }
+
+      thead th {
+        background: var(--surface-alt);
+        color: var(--text);
+        font-size: 0.82rem;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+      }
+
+      tbody tr:last-child td {
+        border-bottom: none;
+      }
+
+      tbody tr:nth-child(even) {
+        background: rgba(240, 239, 233, 0.35);
+      }
+
+      .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 18px;
+      }
+
+      .card {
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        background: var(--surface);
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      }
+
+      .card:hover,
+      .card:focus-visible {
+        transform: translateY(-3px);
+        box-shadow: 0 14px 30px rgba(0, 0, 0, 0.08);
+      }
+
+      .card img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+      }
+
+      .card-copy {
+        padding: 16px 16px 18px;
+      }
+
+      .card-copy h3 {
+        margin: 0 0 8px;
+        font-size: 1.1rem;
+      }
+
+      .card-copy p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 0.95rem;
+      }
+
+      @media (max-width: 760px) {
+        .page {
+          padding-left: 16px;
+          padding-right: 16px;
+        }
+
+        header {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+
+        .portrait {
+          width: 100%;
+          max-width: 360px;
+          flex-basis: auto;
+        }
+
+        .gallery-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 540px) {
+        section {
+          padding: 18px 14px;
+        }
+
+        table,
+        thead,
+        tbody,
+        th,
+        td,
+        tr {
+          display: block;
+        }
+
+        thead {
+          display: none;
+        }
+
+        tbody tr {
+          border-bottom: 1px solid var(--border);
+          padding: 12px 0;
+        }
+
+        tbody td {
+          border: none;
+          padding: 6px 0;
+        }
+
+        tbody td::before {
+          content: attr(data-label);
+          display: inline-block;
+          width: 90px;
+          font-weight: 700;
+          color: var(--text);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <header>
+        <div class="hero-copy">
+          <p class="eyebrow">Persönlich</p>
+          <h1>Ich bin Tom Kurz.</h1>
+          <p>
+            Ich studiere Angewandte Informatik und Geodäsie und interessiere mich für digitale Lösungen, räumliche Daten
+            und die Verbindung von Technik mit praktischen Anwendungen im Alltag.
+          </p>
+          <p>
+            Mein Fokus liegt auf Lernen, Technikverständnis und dem Entwickeln sinnvoller Projekte, die sowohl logisch
+            als auch nutzerfreundlich sind.
+          </p>
+        </div>
+
+        <figure class="portrait">
+          <img src="assets/me.jpg" alt="Portrait von Tom Kurz" />
+        </figure>
+      </header>
+
+      <main>
+        <section class="intro" aria-labelledby="ueber-mich">
+          <h2 id="ueber-mich">Über mich</h2>
+          <p>
+            Ich bin ein Student der Angewandten Informatik und Geodäsie mit Interesse an Daten, digitalen Systemen,
+            Geoinformation und technisch fundierten Lösungen aus der Praxis.
+          </p>
+          <p>
+            Ich möchte meine Kenntnisse in Informatik, Geodäsie und Projektarbeit weiter ausbauen und dabei neue
+            Perspektiven für reale Probleme entdecken.
+          </p>
+        </section>
+
+        <section aria-labelledby="stationen">
+          <h2 id="stationen">Stationen</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>Jahr</th>
+                <th>Station</th>
+                <th>Ort</th>
+                <th>Stichwort</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td data-label="Jahr">2018</td>
+                <td data-label="Station">Ausbildung</td>
+                <td data-label="Ort">Berlin</td>
+                <td data-label="Stichwort">Grundlagen</td>
+              </tr>
+              <tr>
+                <td data-label="Jahr">2019</td>
+                <td data-label="Station">Praktikum</td>
+                <td data-label="Ort">Hamburg</td>
+                <td data-label="Stichwort">Kreativ</td>
+              </tr>
+              <tr>
+                <td data-label="Jahr">2021</td>
+                <td data-label="Station">Studium</td>
+                <td data-label="Ort">Leipzig</td>
+                <td data-label="Stichwort">Recherche</td>
+              </tr>
+              <tr>
+                <td data-label="Jahr">2022</td>
+                <td data-label="Station">Freelance</td>
+                <td data-label="Ort">Köln</td>
+                <td data-label="Stichwort">Selbstständig</td>
+              </tr>
+              <tr>
+                <td data-label="Jahr">2023</td>
+                <td data-label="Station">Projektleitung</td>
+                <td data-label="Ort">München</td>
+                <td data-label="Stichwort">Kooperation</td>
+              </tr>
+              <tr>
+                <td data-label="Jahr">2025</td>
+                <td data-label="Station">Portfolio</td>
+                <td data-label="Ort">Remote</td>
+                <td data-label="Stichwort">Wachstum</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+        <section aria-labelledby="projekte">
+          <h2 id="projekte">Ausgewählte Projekte</h2>
+          <div class="gallery-grid">
+            <a class="card" href="https://www.behance.net/" target="_blank" rel="noreferrer">
+              <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=900&q=80" alt="Projekt 1" />
+              <div class="card-copy">
+                <h3>Visual Stories</h3>
+                <p>Digitale Erzählungen mit klarer Sprache, ruhiger Typografie und emotionaler Bildsprache.</p>
+              </div>
+            </a>
+
+            <a class="card" href="https://github.com/" target="_blank" rel="noreferrer">
+              <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=900&q=80" alt="Projekt 2" />
+              <div class="card-copy">
+                <h3>Design Systems</h3>
+                <p>Strukturierte Komponenten und elegante Richtlinien für digitale Produkte und Teams.</p>
+              </div>
+            </a>
+
+            <a class="card" href="https://www.linkedin.com/" target="_blank" rel="noreferrer">
+              <img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=900&q=80" alt="Projekt 3" />
+              <div class="card-copy">
+                <h3>Strategic Branding</h3>
+                <p>Positionierung, Markenwerte und visuelle Sprache, die Vertrauen und Aufmerksamkeit aufbauen.</p>
+              </div>
+            </a>
+          </div>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>
